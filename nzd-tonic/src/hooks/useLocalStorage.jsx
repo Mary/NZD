@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-const useLocalStorage = (key: string, defaultValue: any) => {
+const useLocalStorage = (key: any, defaultValue: any) => {
   const [localStorageValue, setLocalStorageValue] = useState(
-    JSON.parse(localStorage.getItem(key)) || defaultValue
+    JSON.parse(localStorage.getItem(key) ) || defaultValue
   )
   const setItem = (value: any) => {
     localStorage.setItem(key, JSON.stringify(value))
