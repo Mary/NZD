@@ -1,8 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 import Button from '@material-ui/core/Button'
+import FormControl from "@material-ui/core/FormControl";
 import TextField from '@material-ui/core/TextField'
+import InputLabel from '@material-ui/core/InputLabel';
+import InputIcon from '@material-ui/icons/Input';
 import PropTypes from 'prop-types'
+import { FormHelperText, InputAdornment } from '@material-ui/core';
 
 const useStyles = makeStyles({
   form: {
@@ -23,17 +27,38 @@ const NewToDoForm = ({ text, updateNewToDo, addToDoItem }: {text: string, update
   }
   
   return (
-    <div className={classes.form}>
+  <div>
+    <FormControl className={classes.form}>
       <TextField
+      variant="outlined"
+       size="small"
+        id="input-with-icon"
+        aria-describedby="my-helper-text" 
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">  
+              <InputIcon/>
+            </InputAdornment>
+          ),
+        }}
         value={text}
         onChange={updateNewToDo}
         onKeyDown={submitOnEnter}
-        size="small"
         fullWidth
         className={classes.textField}
       />
-      <Button onClick={addToDoItem}>Submit</Button>
-    </div>
+      <FormHelperText 
+      id="my-helper-text"
+      >
+        Add A Task You'd Like To Get Done Here
+        </FormHelperText>
+    </FormControl>
+    <Button 
+    variant="contained"
+    onClick={addToDoItem}>
+      Submit
+    </Button>
+  </div>
   )
 }
 

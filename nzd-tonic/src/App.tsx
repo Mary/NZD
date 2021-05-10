@@ -7,14 +7,20 @@ import { styled } from '@material-ui/core'
 import { useState } from 'react'
 
 import CustomTheme from './components/CustomTheme.jsx'
-import ToDoForm from './components/ToDoForm'
+import NewToDoForm from './components/ToDoForm'
 import ToDoList from './components/ToDoList'
 import useLocalStorage from './hooks/useLocalStorage'
+import CustomizedStepper from './components/Stepper'
 
 //styled typography for entire app
 
 const CenteredTypography = styled(Typography)({
   textAlign: 'center',
+  fontFamily: 'Roboto Mono', 
+})
+const Header= styled(Typography)({
+  fontFamily: 'Roboto Mono', 
+  fontSize: '24px'
 })
 
 const App = () => {
@@ -52,24 +58,26 @@ const App = () => {
       <Grid container>
         <Grid item xl={4} md={3} sm={2} xs={12}></Grid>
         <Grid item xl={4} md={6} sm={8} xs={12}>
+        <CenteredTypography variant="h3">
+          <Header>NON-ZER0 DAYS</Header>
+        </CenteredTypography>
           <Paper style={{ padding: 10 }}>
-            <CenteredTypography variant="h3">
-              Non-Zero Days
-            </CenteredTypography>
-            <CenteredTypography>
-        Step 1. Add Step 2. Complete Step 3. Celebrate!
-            </CenteredTypography>
+              <CenteredTypography>
+                <CustomizedStepper/>
+              </CenteredTypography>
+          </Paper>
+          
             <ToDoList
               toDoItems={toDoItems}
               completeToDoItem={completeToDoItem}
               removeToDoItem={removeToDoItem}
             />
-            <ToDoForm
+            <NewToDoForm
               text={newToDo}
               updateNewToDo={updateNewToDo}
               addToDoItem={addToDoItem}
             />
-          </Paper>
+         
         </Grid>
       </Grid>
     </CustomTheme>

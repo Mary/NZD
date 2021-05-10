@@ -2,6 +2,7 @@ import { makeStyles, styled } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import PropTypes from 'prop-types'
 
 
@@ -28,11 +29,19 @@ const ToDoItem = ({ toDoItem, completeToDoItem, removeToDoItem }: {toDoItem: any
   return (
     <Li key={toDoItem.id}>
       <Typography
-        variant="h4"
+        variant="h5"
         onClick={() => completeToDoItem(toDoItem.id)}
         className={classes.toDoItem}
       >
-        {toDoItem.text}
+     <div style={{
+       display: 'flex',
+       alignItems: 'center',
+       flexWrap: 'wrap',
+     }}>
+        <ArrowRightIcon/>
+    
+      {toDoItem.text}
+      </div>
       </Typography>
       <IconButton onClick={() => removeToDoItem(toDoItem.id)}>
         <DeleteForeverIcon />
